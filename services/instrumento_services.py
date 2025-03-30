@@ -43,3 +43,15 @@ def actualizar_instrumento(instrumento_id: str, instrumento: Instrumento):
     if resultado.modified_count == 0:
         return {"mensaje":"Instrumento no encontrado"}
     return {"mensaje":"Instrumento actualizado correctamente"}
+
+#eliminar instrumento
+def eliminar_instrumento(instrumento_id: str):
+    collection = database.get_collection('instrumentos')
+    try:
+        inst_id = ObjectId(instrumento_id)
+    except:
+        return None    
+    resultado = collection.delete_one({"_id": inst_id})
+    if resultado.deleted_count == 0:
+        return {"mensaje":"Instrumento no encontrado"}
+    return {"mensaje":"Instrumento eliminado correctamente"}

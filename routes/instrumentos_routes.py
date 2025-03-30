@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from models.instrumento_models import Instrumento
-from services.instrumento_services import obtener_instrumentos, obtener_instrumento_por_id, insertar_instrumento, actualizar_instrumento
+from services.instrumento_services import obtener_instrumentos, obtener_instrumento_por_id, insertar_instrumento, actualizar_instrumento, eliminar_instrumento
 
 router = APIRouter()
 
@@ -39,3 +39,13 @@ async def actualizar_instrumento_endpoint(instrumento_id: str, instrumento: Inst
         return resultado
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error al actualizar el instrumento: {str(e)}")
+    
+@router.delete('/instrumentos/{instrumento_id}')
+async def eliminar_instrumento_endpoint(instrumento_id: str):
+    try:
+        resultado = eliminar_instrumento(instrumento_id)
+        if resultado.get("mensaje") == "Instrumento no encontrado":
+            raise HTTPException(status_code=404, detail="Instrumento no encontrado")
+        return resultado
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al eliminar el instrumento: {str(e)}")    
