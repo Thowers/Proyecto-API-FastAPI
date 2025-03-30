@@ -3,7 +3,7 @@ from typing import Union
 from routes.instrumentos_routes import router as instrumentos_router
 
 app = FastAPI(title="API proyecto")
-app.include_router(instrumentos_router, prefix="/api")
+app.include_router(instrumentos_router, prefix="")
 
 @app.get("/")
 def read_root():
