@@ -1,4 +1,4 @@
-from db.database import database
+from db.database_instrumentos import database
 from bson import ObjectId
 from models.instrumento_models import Instrumento
 

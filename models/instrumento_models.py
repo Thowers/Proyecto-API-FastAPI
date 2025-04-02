@@ -5,3 +5,4 @@ class Instrumento(BaseModel):
     nombre: str
     precio: float
     descripcion: Optional[str] = None
+
