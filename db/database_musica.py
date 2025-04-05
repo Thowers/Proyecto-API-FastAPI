@@ -10,3 +10,6 @@ class Database:
         
 database = Database()
 canciones_collection = database.get_collection('canciones')
+artistas_collection = database.get_collection('artistas')
+estadisticas_collection = database.get_collection('estadisticas')
+
