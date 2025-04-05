@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI
 from typing import Union
 from routes.instrumentos_routes import router as instrumentos_router
 from routes.musica_routes import router as canciones_router
