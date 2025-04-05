@@ -1,12 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from typing import Union
 from routes.instrumentos_routes import router as instrumentos_router
-from routes.musica_routes import router as musica_router
-from routes.canciones_routes import router as canciones_router
+from routes.musica_routes import router as canciones_router
 
 app = FastAPI(title="API proyecto")
 app.include_router(instrumentos_router, prefix="", tags=["Instrumentos"])
-app.include_router(musica_router, prefix="", tags=["Musica"])
 app.include_router(canciones_router, prefix="", tags=["Canciones"])
 
 @app.get("/inst/")
