@@ -1,9 +1,13 @@
 from pymongo import MongoClient
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class Database:
     def __init__(self):
-        self.client = MongoClient('mongodb+srv://towers1904:nikolash190499@clusterthowers.ixmyw.mongodb.net/?retryWrites=true&w=majority&appName=ClusterThowers', tlsallowinvalidcertificates=True)
-        self.db = self.client['MusiCenter']
+        self.client = MongoClient(os.getenv("MONGO_URI"), tlsallowinvalidcertificates=True)
+        self.db = self.client[os.getenv("MONGO_COLLECTION")]
 
     def get_collection(self, collection):
         return self.db[collection]
