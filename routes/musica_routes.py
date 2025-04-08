@@ -32,12 +32,12 @@ def obtener_artistas():
 def obtener_estadisticas():
     return obtener_estadisticas_resumen()
 
-# @router.delete("/admin/clear", status_code=status.HTTP_200_OK)
-# def clear_collections():
-#     try:
-#         canciones_collection.delete_many({})
-#         artistas_collection.delete_many({})
-#         estadisticas_collection.delete_many({})
-#         return {"mensaje": "Todas las colecciones han sido limpiadas."}
-#     except Exception as e:
-#         raise HTTPException(status_code=500, detail=f"Error al limpiar las colecciones: {str(e)}")
+@router.delete("/admin/clear", status_code=status.HTTP_200_OK)
+def clear_collections():
+    try:
+        canciones_collection.delete_many({})
+        artistas_collection.delete_many({})
+        estadisticas_collection.delete_many({})
+        return {"mensaje": "Todas las colecciones han sido limpiadas."}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al limpiar las colecciones: {str(e)}")
